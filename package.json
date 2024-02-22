@@ -37,6 +37,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.0.16",
+		"@fontsource/geist-sans": "^5.0.1",
 		"bits-ui": "^0.18.1",
 		"clsx": "^2.1.0",
 		"geist": "^1.2.2",

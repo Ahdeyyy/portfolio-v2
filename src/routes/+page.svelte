@@ -1,5 +1,5 @@
 <section
-	class="full-width grid h-[90vh] place-content-center space-y-1 overflow-x-hidden bg-slate-900"
+	class="full-width grid h-[100vh] place-content-center space-y-1 overflow-x-hidden bg-slate-900"
 >
 	<h1
 		class="bg-gradient-to-r from-teal-400 via-amber-400 to-red-400 bg-clip-text text-center font-sans text-5xl font-bold uppercase text-transparent md:text-6xl"

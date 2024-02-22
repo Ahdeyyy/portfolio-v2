@@ -3,10 +3,11 @@
 	import { GithubLogo, TwitterLogo } from 'svelte-radix';
 	import { Button } from '$lib/components/ui/button';
 	import '@fontsource-variable/inter';
+	import '@fontsource/geist-sans';
 </script>
 
 <main class="container relative mx-auto space-y-2 p-2 md:p-5">
-	<nav class="sticky left-0 top-0 w-full p-2 backdrop-blur-md md:p-4">
+	<nav class="fixed left-0 top-0 z-50 w-full p-2 backdrop-blur-lg md:p-4">
 		<ul class="flex content-center justify-between">
 			<li class="size-8 rounded-full bg-primary"></li>
 			<li class=" space-x-2 md:space-x-5">
