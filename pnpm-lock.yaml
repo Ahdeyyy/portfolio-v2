@@ -20,6 +20,9 @@ dependencies:
   geist:
     specifier: ^1.2.2
     version: 1.2.2(next@14.1.0)
+  mode-watcher:
+    specifier: ^0.2.1
+    version: 0.2.1(svelte@4.2.11)
   svelte-radix:
     specifier: ^1.0.1
     version: 1.0.1(svelte@4.2.11)
@@ -1835,6 +1838,14 @@ packages:
     dependencies:
       minimist: 1.2.8
     dev: true
+
+  /mode-watcher@0.2.1(svelte@4.2.11):
+    resolution: {integrity: sha512-HLmJgG5kmJCFR/+rcG2te54HjIxqk7BTAsFnsygZR5hcOYlhLEJQ0V8rh1axv2JQIbOAZs1yPlUBSpVATRFtUw==}
+    peerDependencies:
+      svelte: ^4.0.0
+    dependencies:
+      svelte: 4.2.11
+    dev: false
 
   /mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}

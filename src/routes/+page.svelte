@@ -1,18 +1,27 @@
 <script lang="ts">
-	import { AspectRatio } from '$lib/components/ui/aspect-ratio';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Button } from '$lib/components/ui/button';
+	import type { ProjectDetails } from '$lib/types';
+	import Project from '$lib/components/ui/custom/project.svelte';
+
+	const projects: ProjectDetails[] = [
+		{
+			name: 'Svelte epub reader',
+			description:
+				'A desktop application for reading epub files. It is built with svelte and tauri',
+			tags: ['svelte', 'tauri', 'rust', 'tailwind'],
+			repo: 'https://github.com/Ahdeyyy/reader',
+			release: 'https://github.com/Ahdeyyy/reader/releases',
+			img: '/reader.png'
+		}
+	];
 </script>
 
-<section
-	class="full-width grid h-screen place-content-center space-y-2 overflow-x-hidden bg-slate-900"
->
+<section class=" grid h-screen place-content-center space-y-2 overflow-x-hidden">
 	<h1
 		class="bg-gradient-to-r from-amber-400 to-red-400 bg-clip-text text-center font-sans text-5xl font-bold uppercase text-transparent md:text-6xl"
 	>
 		Adeala Adebusuyi
 	</h1>
-	<h2 class="text-center font-sans text-lg font-semibold text-muted">Software developer</h2>
+	<h2 class="text-center font-sans text-lg font-semibold text-gray-600">Software developer</h2>
 	<p class="text-pretty break-words text-center font-sans text-primary md:text-balance">
 		Passionate software developer with a background in computer science. specialties include
 		frontend development with html, css, javascript, react , backend development with golang, nodejs
@@ -26,37 +35,17 @@
 		Projects
 	</h3>
 	<ul class="h-full">
-		<li class="h-1/5">
-			<article class="grid gap-12 p-3 md:grid-flow-col md:grid-cols-5 md:p-5">
-				<img
-					class="h-full w-full rounded-lg object-cover md:col-span-3"
-					src="/reader.png"
-					alt="epub reader"
-				/>
-				<div
-					class="grid place-content-center gap-4 space-y-2 text-balance text-center md:col-span-2"
-				>
-					<p>Svelte epub reader</p>
-					<p>
-						Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto eum ullam sequi
-						debitis unde aliquid deserunt aliquam amet in numquam.
-					</p>
-					<div class="flex justify-center gap-4">
-						<Button>Repository</Button>
-						<Button>Release</Button>
-					</div>
-					<div class="flex">
-						<Badge>Go</Badge>
-					</div>
-				</div>
-			</article>
-		</li>
+		{#each projects as project}
+			<li class="h-1/5">
+				<Project {project} />
+			</li>
+		{/each}
 	</ul>
 </section>
-
+<!-- 
 <style>
 	.full-width {
 		box-shadow: 0 0 0 100vmax rgb(15, 23, 42);
 		clip-path: inset(0 -100vmax);
 	}
-</style>
+</style> -->
