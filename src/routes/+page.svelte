@@ -28,9 +28,9 @@
 	</p>
 </section>
 
-<section class="h-screen space-y-2 p-5">
+<section class="h-screen space-y-7 p-5">
 	<h3
-		class="bg-gradient-to-r from-red-500 to-amber-400 bg-clip-text text-center font-sans text-2xl font-semibold uppercase text-transparent"
+		class="bg-gradient-to-r from-red-500 to-amber-400 bg-clip-text text-center font-sans text-3xl font-semibold uppercase text-transparent md:text-5xl"
 	>
 		Projects
 	</h3>
