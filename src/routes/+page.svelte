@@ -34,7 +34,7 @@
 	>
 		Projects
 	</h3>
-	<ul class="h-full">
+	<ul class="grid h-full gap-10">
 		{#each projects as project}
 			<li class="h-1/5">
 				<Project {project} />

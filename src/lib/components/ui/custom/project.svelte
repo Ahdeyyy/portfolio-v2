@@ -5,12 +5,41 @@
 	import * as Dialog from '$lib/components/ui/dialog';
 	import * as Drawer from '$lib/components/ui/drawer';
 	import { mediaQuery } from 'svelte-legos';
+	import { onMount } from 'svelte';
+
 	let open = false;
 	const isDesktop = mediaQuery('(min-width: 768px)');
 	export let project: ProjectDetails;
+	let article: HTMLElement;
+	onMount(() => {
+		const options = {
+			root: null,
+			threshold: 0.1
+		};
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					// Element is in view
+					article.classList.add('translate-x-0');
+					article.classList.remove('opacity-0');
+					article.classList.remove('-translate-x-72');
+				} else {
+					// Element is not in view
+					article.classList.remove('translate-x-0');
+					article.classList.add('-translate-x-72');
+					article.classList.add('opacity-0');
+				}
+			});
+		}, options);
+
+		observer.observe(article);
+	});
 </script>
 
-<article class="grid gap-12 p-3 font-sans md:grid-flow-col md:grid-cols-5 md:p-5">
+<article
+	bind:this={article}
+	class="grid -translate-x-72 gap-12 p-3 font-sans opacity-0 transition-all duration-1000 md:grid-flow-col md:grid-cols-5 md:p-5"
+>
 	{#if $isDesktop}
 		<Dialog.Root bind:open preventScroll>
 			<Dialog.Trigger class="aspect-video h-full w-full md:col-span-3">
@@ -96,3 +125,8 @@
 		</div>
 	</div>
 </article>
+
+<style>
+	article:global(.show) {
+	}
+</style>
