@@ -7,6 +7,7 @@
 	import * as Avatar from '$lib/components/ui/avatar';
 	import { ModeWatcher, setMode, resetMode } from 'mode-watcher';
 
+	import BackgroundBeams from '$lib/components/ui/backgrounBeams.svelte';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 </script>
 
@@ -51,6 +52,7 @@
 			</li>
 		</ul>
 	</nav>
+	<BackgroundBeams />
 	<ModeWatcher />
 	<slot />
 </main>
