@@ -17,6 +17,7 @@
 			threshold: 0.1
 		};
 		const observer = new IntersectionObserver((entries) => {
+			if (!article) return;
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					// Element is in view
@@ -34,6 +35,24 @@
 
 		observer.observe(article);
 	});
+
+	async function repoClick() {
+		const event_type = `click::repository::${project.name}`;
+		console.log(event_type);
+		await fetch('/api/analytics', {
+			method: 'POST',
+			body: event_type
+		});
+	}
+
+	async function releaseClick() {
+		const event_type = `click::release::${project.name}`;
+		console.log(event_type);
+		await fetch('/api/analytics', {
+			method: 'POST',
+			body: event_type
+		});
+	}
 </script>
 
 <article
@@ -68,8 +87,9 @@
 				</div>
 				<Dialog.Footer>
 					<div class="flex justify-center gap-4">
-						<Button href={project.repo}>Repository</Button>
-						<Button href={project.release}>Release</Button>
+						<Button on:click={repoClick} target="_blank" href={project.repo}>Repository</Button>
+
+						<Button on:click={releaseClick} target="_blank" href={project.release}>Release</Button>
 					</div>
 				</Dialog.Footer>
 			</Dialog.Content>
@@ -115,7 +135,7 @@
 			{project.description}
 		</p>
 		<div class="flex justify-center gap-4">
-			<Button href={project.repo}>Repository</Button>
+			<Button target="_blank" on:click={repoClick} href={project.repo}>Repository</Button>
 			<Button href={project.release}>Release</Button>
 		</div>
 		<div class="flex justify-center gap-4">
@@ -125,8 +145,3 @@
 		</div>
 	</div>
 </article>
-
-<style>
-	article:global(.show) {
-	}
-</style>
