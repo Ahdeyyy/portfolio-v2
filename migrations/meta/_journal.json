@@ -1,20 +1,20 @@
 {
-  "version": "5",
-  "dialect": "sqlite",
-  "entries": [
-    {
-      "idx": 0,
-      "version": "5",
-      "when": 1711120347295,
-      "tag": "0000_shocking_stryfe",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1711128399629,
-      "tag": "0001_amusing_silver_centurion",
-      "breakpoints": true
-    }
-  ]
+	"version": "5",
+	"dialect": "sqlite",
+	"entries": [
+		{
+			"idx": 0,
+			"version": "5",
+			"when": 1711120347295,
+			"tag": "0000_shocking_stryfe",
+			"breakpoints": true
+		},
+		{
+			"idx": 1,
+			"version": "5",
+			"when": 1711128399629,
+			"tag": "0001_amusing_silver_centurion",
+			"breakpoints": true
+		}
+	]
 }

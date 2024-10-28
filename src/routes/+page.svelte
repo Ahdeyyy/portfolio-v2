@@ -15,7 +15,7 @@
 	];
 </script>
 
-<section class=" grid h-screen place-content-center space-y-2 overflow-x-hidden">
+<section class="grid h-screen place-content-center space-y-2 overflow-x-hidden">
 	<h1
 		class="bg-gradient-to-r from-amber-400 to-red-400 bg-clip-text text-center font-sans text-5xl font-bold uppercase text-transparent md:text-6xl"
 	>

@@ -1,7 +1,7 @@
 <script>
 	import '../app.pcss';
 	import { GithubLogo, TwitterLogo, Sun, Moon } from 'svelte-radix';
-	import { Button } from '$lib/components/ui/button';
+	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import '@fontsource-variable/inter';
 	import '@fontsource/geist-sans';
 	import * as Avatar from '$lib/components/ui/avatar';
@@ -9,6 +9,8 @@
 
 	import BackgroundBeams from '$lib/components/ui/backgrounBeams.svelte';
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
+	/** @type {{children?: import('svelte').Snippet}} */
+	let { children } = $props();
 </script>
 
 <main class="container relative mx-auto p-2 md:p-5">
@@ -20,21 +22,21 @@
 					<Avatar.Fallback>AA</Avatar.Fallback>
 				</Avatar.Root>
 			</li>
-			<li class=" space-x-2 md:space-x-5">
+			<li class="space-x-2 md:space-x-5">
 				<DropdownMenu.Root>
-					<DropdownMenu.Trigger asChild let:builder>
-						<Button builders={[builder]} class="rounded-full" variant="outline" size="icon">
-							<Sun class="size-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-							<Moon
-								class="absolute size-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
-							/>
-							<span class="sr-only">Toggle theme</span>
-						</Button>
+					<DropdownMenu.Trigger class={buttonVariants({ variant: 'outline', size: 'icon' })}>
+						<Sun
+							class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+						/>
+						<Moon
+							class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+						/>
+						<span class="sr-only">Toggle theme</span>
 					</DropdownMenu.Trigger>
 					<DropdownMenu.Content align="end">
-						<DropdownMenu.Item on:click={() => setMode('light')}>Light</DropdownMenu.Item>
-						<DropdownMenu.Item on:click={() => setMode('dark')}>Dark</DropdownMenu.Item>
-						<DropdownMenu.Item on:click={() => resetMode()}>System</DropdownMenu.Item>
+						<DropdownMenu.Item onclick={() => setMode('light')}>Light</DropdownMenu.Item>
+						<DropdownMenu.Item onclick={() => setMode('dark')}>Dark</DropdownMenu.Item>
+						<DropdownMenu.Item onclick={() => resetMode()}>System</DropdownMenu.Item>
 					</DropdownMenu.Content>
 				</DropdownMenu.Root>
 				<Button
@@ -54,5 +56,5 @@
 	</nav>
 	<BackgroundBeams />
 	<ModeWatcher />
-	<slot />
+	{@render children?.()}
 </main>

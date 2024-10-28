@@ -1,23 +1,28 @@
 <script lang="ts">
-	import { DropdownMenu as DropdownMenuPrimitive } from "bits-ui";
-	import { cn } from "$lib/utils";
-	import DotFilled from "svelte-radix/DotFilled.svelte";
+	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
+	import { cn } from '$lib/utils';
+	import DotFilled from 'svelte-radix/DotFilled.svelte';
 
 	type $$Props = DropdownMenuPrimitive.RadioItemProps;
 	type $$Events = DropdownMenuPrimitive.RadioItemEvents;
 
-	let className: $$Props["class"] = undefined;
-	export let value: DropdownMenuPrimitive.RadioItemProps["value"];
-	export { className as class };
+	interface Props {
+		class?: $$Props['class'];
+		value: DropdownMenuPrimitive.RadioItemProps['value'];
+		children?: import('svelte').Snippet;
+		[key: string]: any;
+	}
+
+	let { class: className = undefined, value, children, ...rest }: Props = $props();
 </script>
 
 <DropdownMenuPrimitive.RadioItem
 	class={cn(
-		"relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:opacity-50",
+		'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none data-[disabled]:pointer-events-none data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:opacity-50',
 		className
 	)}
 	{value}
-	{...$$restProps}
+	{...rest}
 	on:click
 	on:keydown
 	on:focusin
@@ -31,5 +36,5 @@
 			<DotFilled class="h-4 w-4 fill-current" />
 		</DropdownMenuPrimitive.RadioIndicator>
 	</span>
-	<slot />
+	{@render children?.()}
 </DropdownMenuPrimitive.RadioItem>

@@ -4,28 +4,37 @@
 	import { Button } from '$lib/components/ui/button';
 	import * as Dialog from '$lib/components/ui/dialog';
 	import * as Drawer from '$lib/components/ui/drawer';
-	import { mediaQuery } from 'svelte-legos';
+
+	import { MediaQuery } from 'runed';
 	import { onMount } from 'svelte';
 
-	let open = false;
-	const isDesktop = mediaQuery('(min-width: 768px)');
-	export let project: ProjectDetails;
-	let article: HTMLElement;
+	let open = $state(false);
+	const isDesktop = new MediaQuery('(min-width: 768px)');
+	interface Props {
+		project: ProjectDetails;
+	}
+
+	let { project }: Props = $props();
+	let article: HTMLElement | undefined = $state();
 	onMount(() => {
 		const options = {
 			root: null,
 			threshold: 0.1
 		};
+		if (!article) return;
+
 		const observer = new IntersectionObserver((entries) => {
-			if (!article) return;
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
 					// Element is in view
+					if (!article) return;
 					article.classList.add('translate-x-0');
 					article.classList.remove('opacity-0');
 					article.classList.remove('-translate-x-72');
 				} else {
 					// Element is not in view
+					if (!article) return;
+
 					article.classList.remove('translate-x-0');
 					article.classList.add('-translate-x-72');
 					article.classList.add('opacity-0');
@@ -59,7 +68,7 @@
 	bind:this={article}
 	class="grid -translate-x-72 gap-12 p-3 font-sans opacity-0 transition-all duration-1000 md:grid-flow-col md:grid-cols-5 md:p-5"
 >
-	{#if $isDesktop}
+	{#if isDesktop.matches}
 		<Dialog.Root bind:open preventScroll>
 			<Dialog.Trigger class="aspect-video h-full w-full md:col-span-3">
 				<img
